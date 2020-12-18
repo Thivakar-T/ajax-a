@@ -8,7 +8,6 @@ $(document ).ready(function(){
       //data:"",
       contentType:'application/json',
       success: function (response) { 
-       
         $.each(response,function(i,object){
             productArray.push(object);
         });

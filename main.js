@@ -10,9 +10,14 @@ function validateForm() {
   var purchase = $("#purchase").val();
   var sales =  $("#sales").val();
   var description =  $("#description").val();
-  var radio1 =  $("#radio1").prop("checked", true);
-  var radio2 =  $("#radio2").prop("checked", true);
-  var radio3 =  $("#radio3").prop("checked", true);
+  var status ;
+  if (document.getElementById("radio1").checked) {
+  status = document.getElementById("radio1").value;
+  } else if (document.getElementById("radio2").checked) {
+  status = document.getElementById("radio2").value;
+  }else{
+    status = document.getElementById("radio3").value;
+  }
 
   product["category"] = category;
   product["code"] = code;
@@ -22,22 +27,9 @@ function validateForm() {
   product["initial"] = initial;
   product["purchase"] = purchase;
   product["sales"] = sales;
-  product["radio1"] = radio1;
-  product["radio2"] = radio2;
-  product["radio3"] = radio3;
+  product["status"] = status;
   product["description"] = description;
 
-  // if(product.radio1 == "option1"){
-  //   $("#radio1").prop("checked", true);
-  // }
-  // else if (product.radio2 == "option2"){
-  //   $("#radio2").prop("checked", true);
-
-  // }
-  // else{
-  //   $("#radio3").prop("checked", true);
-    
-  // }
 
   if(product.id){
     product.id=product.id;
@@ -93,29 +85,22 @@ $(document).ready(function () {
         $("#initial").val(product.initial);
         $("#purchase").val(product.purchase);
         $("#sales").val(product.sales);
-       $("#description").val(product.description);
-      //   $("#radio1").val(product.radio1);
-      //  $("#radio2").val(product.radio2);
-      //   $("#radio3").val(product.radio3);
-        // if(product.prop.radio1 == "option1"){
-        //   $("#radio1").prop("checked", true);
-        // }
-        // else if (product.prop.radio2 == "option2"){
-        //   $("#radio2").prop("checked", true);
+        $("#description").val(product.description);
+
+
+
+        if(product.status == "option1"){
+          $("#radio1").prop("checked", "true");
+        }
+        else if (product.status == "option2"){
+          $("#radio2").prop("checked", "true");
       
-        // }
-        // else {
-        //   $("#radio3").prop("checked",true);
-        // }
+        }
+        else {
+          $("#radio3").prop("checked","true");
+        }
        
       }
   
     });
   });
-//   $(document).ready(function(){
-//     $('#Submit').click(function(){
-//     $('#status1').prop("checked", false);
-//     $('#status2').prop("checked", false);
-//     $('#status3').prop("checked", false);
-//     });
-//     });
